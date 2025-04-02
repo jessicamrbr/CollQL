@@ -1,0 +1,1 @@
+bool deepEquals(value, other) { return false; }
