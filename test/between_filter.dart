@@ -42,8 +42,15 @@ class Bound<T> {
       {this.upperInclusive = true, this.lowerInclusive = true});
 }
 
+class FilterBuilderWithBetween extends FilterBuilder {
+  FilterBuilderWithBetween(super.field);
 
-
-
-
-
+  Filter between(
+    Comparable lowerBound, Comparable upperBound,
+    {upperInclusive = true, lowerInclusive = true}
+  ) =>
+    BetweenFilter(
+      field,
+      Bound(upperBound, lowerBound, upperInclusive: upperInclusive, lowerInclusive: lowerInclusive),
+    );
+}

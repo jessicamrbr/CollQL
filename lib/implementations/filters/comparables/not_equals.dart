@@ -1,7 +1,7 @@
 import 'package:collql/collql.dart';
 import 'package:collql/utils/utils.dart';
 
-class NotEqualsFilter extends ComparableFilter with ApplicableToIndex {
+class NotEqualsFilter extends ComparableFilter {
   NotEqualsFilter(super.field, super.value);
 
   @override
@@ -9,16 +9,7 @@ class NotEqualsFilter extends ComparableFilter with ApplicableToIndex {
     var fieldValue = doc.get(field);
     return !deepEquals(fieldValue, value);
   }
-
-  @override
-  Stream<dynamic> applyOnIndex(IndexMap indexMap) async* {
-    await for ((Comparable?, dynamic) entry in indexMap.entries()) {
-      if (!deepEquals(value, entry.$1)) {
-        yield* yieldValues(entry.$2);
-      }
-    }
-  }
-
+  
   @override
   toString() => "($field != $value)";
 }

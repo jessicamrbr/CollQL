@@ -1,6 +1,6 @@
 import 'package:collql/collql.dart';
 
-class NotInFilter extends ComparableArrayFilter {
+class NotInFilter extends ComparableInListFilter {
   final List<Comparable> _comparableSet = [];
 
   NotInFilter(String field, List<Comparable> values) : super(field, values) {
@@ -15,14 +15,6 @@ class NotInFilter extends ComparableArrayFilter {
       return !_comparableSet.contains(fieldValue);
     }
     return false;
-  }
-
-  Stream<dynamic> applyOnIndex(IndexMap indexMap) async* {
-    await for ((Comparable?, dynamic) entry in indexMap.entries()) {
-      if (!_comparableSet.contains(entry.$1)) {
-        yield* yieldValues(entry.$2);
-      }
-    }
   }
 
   @override

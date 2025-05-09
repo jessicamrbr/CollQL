@@ -1,0 +1,13 @@
+export 'conditionated/max.dart';
+export 'conditionated/min.dart';
+export 'setters/current_date.dart';
+export 'setters/inc.dart';
+export 'setters/mul.dart';
+export 'setters/rename.dart';
+export 'setters/set.dart';
+export 'setters/unset.dart';
+export 'setters_list/add_to_set.dart';
+export 'setters_list/pop.dart';
+export 'setters_list/pull.dart';
+export 'setters_list/push.dart';
+export 'setters_list/sort.dart';

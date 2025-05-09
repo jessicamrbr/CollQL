@@ -1,4 +1,4 @@
 export 'abstractions/abstractions.dart';
-export 'extensions/field_name.ext.dart';
+export 'extensions/extensions.dart';
 export 'implementations/implementations.dart';
 export 'proxies/proxies.dart';

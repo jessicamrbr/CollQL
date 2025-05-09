@@ -1,15 +1,15 @@
 import 'package:collql/collql.dart';
 
-class NotFilter extends CollQLFilter {
-  final Filter _filter;
+class NotFilter extends Filter {
+  final Filter filter;
 
-  NotFilter(this._filter);
+  NotFilter(this.filter);
 
   @override
   bool apply(Document element) {
-    return !_filter.apply(element);
+    return !filter.apply(element);
   }
 
   @override
-  String toString() => "!(${_filter.toString()})";
+  String toString() => "!(${filter.toString()})";
 }
