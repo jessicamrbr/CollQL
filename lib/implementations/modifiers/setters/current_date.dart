@@ -6,8 +6,16 @@ class CurrentDateModifier extends FieldBasedModifier {
   CurrentDateModifier(String selector) : super(selector, null);
 
   @override
-  void apply(Document doc) {
-    doc.set(selector, DateTime.now().toIso8601String());
+  Document apply(Document doc) {
+    doc.set(selector, DateTime.utc(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+      DateTime.now().hour - DateTime.now().timeZoneOffset.inHours,
+      DateTime.now().minute,
+      DateTime.now().second,
+    ).toIso8601String());
+    return doc;
   }
 
   @override

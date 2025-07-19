@@ -6,8 +6,9 @@ class SetModifier extends FieldBasedModifier {
   SetModifier(super.selector, super.value);
 
   @override
-  void apply(Document doc) {
+  Document apply(Document doc) {
     doc.set(selector, value);
+    return doc;
   }
 
   @override

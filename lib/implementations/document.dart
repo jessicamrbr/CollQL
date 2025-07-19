@@ -23,10 +23,16 @@ mixin IdUUIDV4 on AbstractDocument implements IdProperty {
 
 mixin SelectorJsonPointer on AbstractDocument implements SelectorProperty {  
   @override
-  dynamic get(String selector, { dynamic defaultValue }) {
-    selector = (selector != '' && selector.substring(0, 1) != '/') ?  '/$selector' : selector;
-    final pointer = JsonPointer(selector);
-    return pointer.read(internal, orElse: () => defaultValue);
+  T? get<T>(String selector, { T? defaultValue }) {
+    try {
+      selector = (selector.isEmpty || selector.substring(0, 1) != '/') ?  '/$selector' : selector;
+      if (selector == '/') return internal as T;
+
+      final pointer = JsonPointer(selector);
+      return pointer.read(internal, orElse: () => defaultValue) as T?;
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
@@ -34,6 +40,14 @@ mixin SelectorJsonPointer on AbstractDocument implements SelectorProperty {
     selector = selector.substring(0, 1) != '/' ?  '/$selector' : selector;
     final pointer = JsonPointer(selector);
     internal = jsonDecode(jsonEncode(pointer.write(internal, newValue)));
+  }
+
+  @override
+  void remove(Object? selector) {
+    selector = selector as String;
+    selector = selector.substring(0, 1) != '/' ?  '/$selector' : selector;
+    final pointer = JsonPointer(selector);
+    internal = jsonDecode(jsonEncode(pointer.remove(internal)));
   }
 
   @override

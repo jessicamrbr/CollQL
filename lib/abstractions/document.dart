@@ -21,7 +21,7 @@ abstract class AbstractDocument with MapMixin<String, dynamic> {
   /// Get a value from the document at the specified path selector.
   @override
   dynamic operator [](Object? selector) => get(selector as String);
-  dynamic get(String selector, { dynamic defaultValue });
+  T? get<T>(String selector, { T? defaultValue });
 
   @override
   Iterable<String> get keys => internal.keys;
@@ -41,7 +41,7 @@ abstract class AbstractDocument with MapMixin<String, dynamic> {
 
   /// Remove a value from the document at the specified path selector.
   @override
-  void remove(Object? selector) { throw UnimplementedError('remove'); }
+  void remove(Object? selector);
 
   @override
   void clear() { throw UnimplementedError('clear'); }
@@ -103,7 +103,7 @@ abstract interface class IdProperty {
 }
 
 abstract interface class SelectorProperty {
-  dynamic get(String selector, { dynamic defaultValue });
+  T? get<T>(String selector, { T? defaultValue });
   dynamic operator [](String selector) => get(selector);
 
   void set(String selector, dynamic newValue);

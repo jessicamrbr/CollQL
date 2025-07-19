@@ -6,10 +6,11 @@ class RenameModifier extends FieldBasedModifier {
   RenameModifier(super.selector, super.value);
 
   @override
-  void apply(Document doc) {
+  Document apply(Document doc) {
     String selectorFrom = selector;
     String selectorTo = value;
     doc.move(selectorFrom, selectorTo);
+    return doc;
   }
 
   @override

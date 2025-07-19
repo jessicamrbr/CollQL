@@ -1,5 +1,4 @@
 export 'comparables/equals.dart';
-export 'comparables/not_equals.dart';
 export 'comparables/regex.dart';
 export 'comparables_list/element_match.dart';
 export 'comparables_list/in.dart';

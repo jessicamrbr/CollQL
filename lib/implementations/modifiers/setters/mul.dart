@@ -8,9 +8,10 @@ class MulModifier extends AritmeticFieldBasedModifier {
   MulModifier(super.selector, super.value, { this.defaultValue = 1 });
 
   @override
-  void apply(Document doc) {
+  Document apply(Document doc) {
     dynamic newValue = (doc.get(selector) ?? defaultValue) * value;
     doc.set(selector, newValue);
+    return doc;
   }
 
   @override

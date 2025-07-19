@@ -6,8 +6,9 @@ class UnsetModifier extends FieldBasedModifier {
   UnsetModifier(String selector): super(selector, null);
 
   @override
-  void apply(Document doc) {
+  Document apply(Document doc) {
     doc.remove(selector);
+    return doc;
   }
 
   @override

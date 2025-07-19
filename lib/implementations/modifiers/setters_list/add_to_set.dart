@@ -6,11 +6,13 @@ class AddToSetModifier extends ListFieldBasedModifier {
   AddToSetModifier(String selector, dynamic value): super(selector, value, null);
 
   @override
-  void apply(Document doc) {
-    Set<dynamic> newValueAsSet = ((doc.get(selector) ?? []) as List).toSet();
-    newValueAsSet.add(value);
-    List<dynamic> newValue = newValueAsSet.toList();
+  Document apply(Document doc) {
+    final currentValue = doc.get(selector);
+    final currentValueAsSet = ((currentValue != null && currentValue is List) ? currentValue : []).toSet();
+    currentValueAsSet.add(value);
+    final newValue = currentValueAsSet.toList();
     doc.set(selector, newValue);
+    return doc;
   }
 
   @override

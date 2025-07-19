@@ -1,7 +1,7 @@
 import 'package:collql/implementations/document.dart';
 
 abstract class Modifier {
-  void apply(Document doc);
+  Document apply(Document doc);
 
   @override
   bool operator ==(Object other) =>

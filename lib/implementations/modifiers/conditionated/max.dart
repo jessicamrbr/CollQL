@@ -6,8 +6,9 @@ class MaxModifier extends FieldBasedModifier with ConditionedFieldBasedModifier 
   MaxModifier(super.selector, super.value);
 
   @override
-  void apply(Document doc) {
+  Document apply(Document doc) {
     if(doc.get(selector) < value) doc.set(selector, value);
+    return doc;
   }
 
   @override

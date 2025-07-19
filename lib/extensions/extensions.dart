@@ -1,10 +1,8 @@
 
 import 'package:collql/collql.dart';
-import 'package:collql/proxies/modifier_builder.dart';
 
 extension FieldNameExt on FieldName {
   Filter eq(dynamic value) => where(this).eq(value);
-  Filter notEq(dynamic value) => where(this).notEq(value);
   Filter gt(dynamic value) => where(this).gt(value);
   Filter operator >(dynamic value) => where(this).gt(value);
   Filter gte(dynamic value) => where(this).gte(value);
@@ -14,7 +12,7 @@ extension FieldNameExt on FieldName {
   Filter lte(dynamic value) => where(this).lte(value);
   Filter operator <=(dynamic value) => where(this).lte(value);
   Filter within(List<Comparable> values) => where(this).within(values);
-  Filter notIn(List<Comparable> values) => where(this).notIn(values);
+  Filter notIn(List<Comparable> values) => where(this).notin(values);
   Filter regex(String value) => where(this).regex(value);
   // Filter elemMatch(Filter filter) => ElementMatchFilter(field, filter);
 

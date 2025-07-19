@@ -7,10 +7,11 @@ class PullModifier extends ListFieldBasedModifier with ConditionedFieldBasedModi
   PullModifier(String selector, this.fnPredicate) : super(selector, null, null);
 
   @override
-  void apply(Document doc) {
+  Document apply(Document doc) {
     List<dynamic> listValue = ((doc.get(selector) ?? []) as List);
     listValue.removeWhere(fnPredicate);
-    doc.set(selector, value);
+    doc.set(selector, listValue);
+    return doc;
   }
 
   @override
