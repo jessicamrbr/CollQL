@@ -1,6 +1,6 @@
 name: collql
 description: Collection Query Language, for document match and search.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/jessicamrbr/CollQL
 
 environment:
