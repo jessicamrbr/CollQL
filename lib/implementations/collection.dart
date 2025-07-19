@@ -1,8 +1,6 @@
 import 'dart:collection';
 import 'package:collql/collql.dart';
 
-import 'dart:collection';
-
 class CollectionQL extends Object with ListMixin<Document> {
   final List<Document> _innerList;
 
